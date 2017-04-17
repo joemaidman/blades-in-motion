@@ -44,7 +44,7 @@ void loop() {
           Serial.println(readString); //print to serial monitor for debuging
 
           if (readString.indexOf('?') >= 0) { //don't send new page
-            client.println("HTTP/1.1 204 Zoomkat\r\n\r\n");
+            client.println("HTTP/1.1 204 Awesome Fan Controller\r\n\r\n");
           }
           else {
             client.println("HTTP/1.1 200 OK"); //send new page
@@ -53,7 +53,7 @@ void loop() {
 
             client.println("<HTML>");
             client.println("<HEAD>");
-            client.println("<TITLE>Arduino GET test page</TITLE>");
+            client.println("<TITLE>Awesome Fan Controller</TITLE>");
             client.println("</HEAD>");
             client.println("<BODY style='font-family:verdana;'>");
 
