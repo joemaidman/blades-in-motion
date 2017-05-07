@@ -71,17 +71,17 @@ void loop() {
           delay(1);
           client.stop();
 
-          if (readString.indexOf("/?1") > 0) //checks for on
+          if (readString.indexOf("/?1") > 0) //checks for lights
           {
             sendRF(lightCode);
             Serial.println("Lights");
           }
-          if (readString.indexOf("/?2") > 0) //checks for off
+          if (readString.indexOf("/?2") > 0) //checks for min
           {
             sendRF(fanMinCode);
             Serial.println("Fans min");
           }
-          if (readString.indexOf("/?3") > 0) //checks for off
+          if (readString.indexOf("/?3") > 0) //checks for max
           {
             sendRF(fanMaxCode);
             Serial.println("Fans max");
