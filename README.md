@@ -1,9 +1,6 @@
 # Blades in motion
 This project reverse engineers radio frequencies (RF) from a ceiling fan remote control using RTL-SDR (software defined radio), SDR#, an audio editor (audacity) and replays the signals using an Arduino micro controller with an RF transmitter.
 
-This post will explain how I went about sniffing, analysing and replaying the RF signals from a pair of remote operated ceiling fans operating on the 434Mhz frequency, as well as some of the science I learned along the way. In a world where we expect our data to be transferred securely encrypted, it may come as a surprise that so much is hiding in plain sight! While this example may seem trivial, suppose this were your doorbell or maybe your garage door or perhaps your wireless alarm system...
-
-
 [Read the full blog post](http://www.joemaidman.com/?p=317)
 
 ## Summary
