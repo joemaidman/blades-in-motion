@@ -55,10 +55,9 @@ The biggest difference to note is that the ASK signal doesn't change <em>frequen
 <a href="http://www.joemaidman.com/wp-content/uploads/2017/02/wavelength.gif"><img class="alignnone size-medium wp-image-347" src="http://www.joemaidman.com/wp-content/uploads/2017/02/wavelength-300x213.gif" alt="wavelength" width="300" height="213" /></a>
 
 ### Figure 4 Retro lesson in AM/FM radio basics c1964
+[![Radio primer](http://www.joemaidman.com/wp-content/uploads/2017/05/radio.png)](https://www.youtube.com/watch?v=xn6lzrMJUDs)
 
-https://www.youtube.com/watch?v=xn6lzrMJUDs
-
-### Figure 5 shows the radio frequency allocations for the UK, from<em> Very Low Frequency</em> (VLF) right up to<em> Extremely High Frequency</em> (EHF) around 300Ghz. Our remote is operating at 434Mhz, putting it in the Ultra High Frequency (UHF) band (circled in red).
+Figure 5 shows the radio frequency allocations for the UK, from<em> Very Low Frequency</em> (VLF) right up to<em> Extremely High Frequency</em> (EHF) around 300Ghz. Our remote is operating at 434Mhz, putting it in the Ultra High Frequency (UHF) band (circled in red).
 
 ### Figure 5 UK RF allocations (click to enlarge)
 
@@ -254,7 +253,7 @@ void sendRF(int code []) {
 <a href="http://www.joemaidman.com/wp-content/uploads/2017/05/webpage1.png"><img class="alignnone wp-image-519 size-large" src="http://www.joemaidman.com/wp-content/uploads/2017/05/webpage1-1024x638.png" alt="webpage" width="550" height="343" /></a>
 
 ### Figure 14 Demo
+[![Fan test](http://www.joemaidman.com/wp-content/uploads/2017/05/fans.png)](https://www.youtube.com/watch?v=-oWBbTvQUzc&feature=youtu.be)
 
-https://www.youtube.com/watch?v=-oWBbTvQUzc&feature=youtu.be
 
 It works!
