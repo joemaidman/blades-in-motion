@@ -19,9 +19,9 @@ We will be using a cheap digital TV/Radio USB receiver dongle to receive signals
 
 ### Software
 <ul style="list-style-type: circle;">
-	<li><strong>[SDR#](http://airspy.com/download/) to listen for and record the RF signal (free).</strong></li>
-	<li><strong>[Audacity](http://www.audacityteam.org/download/) to analyse the RF packets (free). </strong>We are essentially using this as a basic logic analyser to inspect the waveforms sent by the remote.</li>
-	<li><strong>[Arduino IDE](https://www.arduino.cc/en/main/software) to program the microcontroller to replay RF signals (free).</strong></li>
+	<li><strong><a href="http://airspy.com/download/">SDR#</a> to listen for and record the RF signal (free).</strong></li>
+	<li><strong><a href="http://www.audacityteam.org/download/">Audacity</a> to analyse the RF packets (free). </strong>We are essentially using this as a basic logic analyser to inspect the waveforms sent by the remote.</li>
+	<li><strong><a href="https://www.arduino.cc/en/main/software">Arduino IDE</a> to program the microcontroller to replay RF signals (free).</strong></li>
 	<li><strong>An internet browser such as Google Chrome (free).</strong></li>
 </ul>
 
@@ -257,3 +257,5 @@ It works!
 
 ### Acknowledgments
 https://github.com/samyk for the inspiration
+https://www.youtube.com/watch?v=blpycY5JCm0 for the tips
+My girlfriend for my constant stealing of the remote control and random light/fan shows!
