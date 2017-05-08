@@ -6,7 +6,7 @@ This post will explain how I went about sniffing, analysing and replaying the R
 
 [Read the full blog post](http://www.joemaidman.com/?p=317)
 
-##Summary
+## Summary
 
 We will be using a cheap digital TV/Radio USB receiver dongle to receive signals sent by the remote control which will then be demodulated and recorded with [SDR#](http://airspy.com/download/), a software defined radio program. We will analyse these audio clips in [Audacity](http://www.audacityteam.org/), an open-source audio editor to understand the information being transmitted before reconstructing the signal in software and replaying it via an [Arduino](https://www.arduino.cc/) microcontroller with an [RF transmitter](http://www.robotshop.com/uk/rf-link-transmitter-434-mhz.html). Finally, we will have the Arduino serve as a basic HTTP server (using an [Ethernet shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield)) which will allow us to send commands to the target device via a web page.
 
