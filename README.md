@@ -12,9 +12,9 @@ We will be using a cheap digital TV/Radio USB receiver dongle to receive signals
 ### Hardware
 <ul style="list-style-type: circle;">
 	<li><strong>An RF controlled device as the target device. </strong>Any remote device using ASK to transmit data will do.</li>
-	<li><strong>A [RTL-SDR TV dongle](http://www.ebay.co.uk/itm/like/322350334259?lpid=122&amp;chn=ps&amp;adgroupid=35352091421&amp;rlsatarget=pla-279351682698&amp;adtype=pla&amp;poi=&amp;googleloc=1007216&amp;device=c&amp;campaignid=738466455&amp;crdt=0) to detect the RF signal(s) (c£4).</strong></li>
-	<li><strong>An [Arduino Uno](https://www.amazon.co.uk/Arduino-A000066-UNO/dp/B008GRTSV6) to replay/transmit the RF signal (c£20).</strong></li>
-	<li><strong>An [RF transmitter module](http://www.robotshop.com/en/rf-link-transmitter-434-mhz.html) (c£3).</strong></li>
+	<li><strong>A <a href="http://www.ebay.co.uk/itm/like/322350334259?lpid=122&amp;chn=ps&amp;adgroupid=35352091421&amp;rlsatarget=pla-279351682698&amp;adtype=pla&amp;poi=&amp;googleloc=1007216&amp;device=c&amp;campaignid=738466455&amp;crdt=0">RTL-SDR TV dongle</a> to detect the RF signal(s) (c£4).</strong></li>
+	<li><strong>An <a href="https://www.amazon.co.uk/Arduino-A000066-UNO/dp/B008GRTSV6">Arduino Uno</a> to replay/transmit the RF signal (c£20).</strong></li>
+	<li><strong>An <a href="http://www.robotshop.com/en/rf-link-transmitter-434-mhz.html">RF transmitter module</a> (c£3).</strong></li>
 </ul>
 
 ### Software
@@ -254,3 +254,6 @@ void sendRF(int code []) {
 
 
 It works!
+
+### Acknowledgments
+https://github.com/samyk for the inspiration
