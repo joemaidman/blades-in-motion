@@ -1,4 +1,5 @@
 # Blades in motion
+
 This project reverse engineers radio frequencies (RF) from a ceiling fan remote control using RTL-SDR (software defined radio), SDR#, an audio editor (audacity) and replays the signals using an Arduino micro controller with an RF transmitter.
 
 [Read the full blog post](http://www.joemaidman.com/?p=317)
@@ -10,6 +11,7 @@ We will be using a cheap digital TV/Radio USB receiver dongle to receive signals
 ## Part 1: Hardware &amp; software
 
 ### Hardware
+
 <ul style="list-style-type: circle;">
 	<li><strong>An RF controlled device as the target device. </strong>Any remote device using ASK to transmit data will do.</li>
 	<li><strong>A <a href="http://www.ebay.co.uk/itm/like/322350334259?lpid=122&amp;chn=ps&amp;adgroupid=35352091421&amp;rlsatarget=pla-279351682698&amp;adtype=pla&amp;poi=&amp;googleloc=1007216&amp;device=c&amp;campaignid=738466455&amp;crdt=0">RTL-SDR TV dongle</a> to detect the RF signal(s) (c£4).</strong></li>
@@ -18,6 +20,7 @@ We will be using a cheap digital TV/Radio USB receiver dongle to receive signals
 </ul>
 
 ### Software
+
 <ul style="list-style-type: circle;">
 	<li><strong><a href="http://airspy.com/download/">SDR#</a> to listen for and record the RF signal (free).</strong></li>
 	<li><strong><a href="http://www.audacityteam.org/download/">Audacity</a> to analyse the RF packets (free). </strong>We are essentially using this as a basic logic analyser to inspect the waveforms sent by the remote.</li>
@@ -33,7 +36,7 @@ RFs are electromagnetic waves that lie in the range from 3 kHz to 300 GHz, comf
 
 ### Figure 1 Electromagnetic spectrum &amp; waves
 
-<img class="alignnone wp-image-346 " src="http://www.joemaidman.com/wp-content/uploads/2017/02/EMSpectrumcolor.jpg" alt="EMSpectrumcolor" width="428" height="321" />
+<img class="alignnone wp-image-346 " src="http://www.joemaidman.com/assets/images/2017-05-08/EMSpectrumcolor.jpg" alt="EMSpectrumcolor" width="428" height="321" />
 
 ### Modulation
 
@@ -44,21 +47,24 @@ Modulation refers to the method used to encode digital data in a radio signal. T
 **b. Frequency Shift Keying (FSK).** The signal changes <em>frequency</em> (wavelength) while the amplitude remains constant.
 
 ### Figure 2 Modulation types
-<a href="http://www.joemaidman.com/wp-content/uploads/2017/02/modulations.png"><img class="alignnone size-medium wp-image-331" src="http://www.joemaidman.com/wp-content/uploads/2017/02/modulations-300x141.png" alt="modulations" width="300" height="141" /></a>
+
+<a href="http://www.joemaidman.com/assets/images/2017-05-08/modulations.png"><img class="alignnone size-medium wp-image-331" src="http://www.joemaidman.com/assets/images/2017-05-08/modulations.png" alt="modulations" width="300" height="141" /></a>
 
 The biggest difference to note is that the ASK signal doesn't change <em>frequency</em>, rather it changes <em>amplitude</em>; in figure 2 ASK's signal goes quiet (off) to send a zero and 'loud' (on) for a one. Our RF remote (and many other basic devices) uses a variation of ASK called On-Off Keying (OOK) that has no carrier signal for logic zero (more below). In contrast, FSK alters its <em>frequency </em>oscillating around its base frequency to transmit data but does so at a constant <em>amplitude</em>. FSK is actually switching frequencies slightly (within a few hundred kHz) to convey information. Consider tuning to your favourite FM radio station which operated at 98.5 FM; your radio is actually listening for signals in a range around 98.5Mhz.  Because of the variable frequency of FSK, it requires a larger bandwidth but this compromise is more than offset by its resistance to noise; ASK is more prone to interference which tends to manifest in changes in amplitude rather than frequency. FM demodulators can remove/ignore the amplitude spikes and still read the underlying signal clearly. AM does, however, have the benefit of a longer wavelength meaning it can move further and better cope with large obstacles.
 
 ### Figure 3 Waves
-<a href="http://www.joemaidman.com/wp-content/uploads/2017/02/wavelength.gif"><img class="alignnone size-medium wp-image-347" src="http://www.joemaidman.com/wp-content/uploads/2017/02/wavelength-300x213.gif" alt="wavelength" width="300" height="213" /></a>
+
+<a href="http://www.joemaidman.com/assets/images/2017-05-08/wavelength.gif"><img class="alignnone size-medium wp-image-347" src="http://www.joemaidman.com/assets/images/2017-05-08/wavelength.gif" alt="wavelength" width="300" height="213" /></a>
 
 ### Figure 4 Retro lesson in AM/FM radio basics c1964
-[![Radio primer](http://www.joemaidman.com/wp-content/uploads/2017/05/radio.png)](https://www.youtube.com/watch?v=xn6lzrMJUDs)
+
+<a href="https://www.youtube.com/watch?v=D65KXwfDs3s">Watch</a>
 
 Figure 5 shows the radio frequency allocations for the UK, from<em> Very Low Frequency</em> (VLF) right up to<em> Extremely High Frequency</em> (EHF) around 300Ghz. Our remote is operating at 434Mhz, putting it in the Ultra High Frequency (UHF) band (circled in red).
 
 ### Figure 5 UK RF allocations (click to enlarge)
 
-<a href="http://www.joemaidman.com/wp-content/uploads/2017/02/uk-spectrum-allocation-chart1.jpg"><img class="alignnone wp-image-348 size-large" src="http://www.joemaidman.com/wp-content/uploads/2017/02/uk-spectrum-allocation-chart1-1024x713.jpg" alt="uk-spectrum-allocation-chart1" width="550" height="383" /></a>
+<a href="http://www.joemaidman.com/assets/images/2017-05-08/uk-spectrum-allocation-chart1.jpg"><img class="alignnone wp-image-348 size-large" src="http://www.joemaidman.com/assets/images/2017-05-08/uk-spectrum-allocation-chart1.jpg" alt="uk-spectrum-allocation-chart1" width="550" height="383" /></a>
 
 ### Reconnaissance
 
@@ -66,16 +72,15 @@ Any device that contained electronics capable of emitting RF energy by radiatio
 
 ### Figure 6 Target device (rear view)
 
-<a href="http://www.joemaidman.com/wp-content/uploads/2017/05/20170414_175006.jpg"><img class="alignnone wp-image-512 " src="http://www.joemaidman.com/wp-content/uploads/2017/05/20170414_175006-e1494239280811-768x1024.jpg" alt="20170414_175006" width="318" height="424" /></a>
-
+<a href="http://www.joemaidman.com/assets/images/2017-05-08/20170414_175006.jpg"><img class="alignnone wp-image-512 " src="http://www.joemaidman.com/assets/images/2017-05-08/20170414_175006.jpg" alt="20170414_175006" width="318" height="424" /></a>
 
 ### Part 3: Practical
 
 Follow [this guide](http://www.rtl-sdr.com/rtl-sdr-quick-start-guide/) to set-up SDR# and once you have it running and tuned to your devices frequency, you should see a spike in the spectrum like this when a button is pressed:
 
-### Figure 7 SDR#
+### Figure 7 SDR
 
-<a href="http://www.joemaidman.com/wp-content/uploads/2017/05/Arduino_RF_Tx_433_ModuleTesting_SDRSharp_03.png"><img class="alignnone wp-image-515 " src="http://www.joemaidman.com/wp-content/uploads/2017/05/Arduino_RF_Tx_433_ModuleTesting_SDRSharp_03.png" alt="Arduino_RF_Tx_433_ModuleTesting_SDRSharp_03" width="569" height="474" /></a>
+<a href="http://www.joemaidman.com/assets/images/2017-05-08/Arduino_RF_Tx_433_ModuleTesting_SDRSharp_03.png"><img class="alignnone wp-image-515 " src="http://www.joemaidman.com/assets/images/2017-05-08/Arduino_RF_Tx_433_ModuleTesting_SDRSharp_03.png" alt="Arduino_RF_Tx_433_ModuleTesting_SDRSharp_03" width="569" height="474" /></a>
 
 Use SDR#'s built-in recording function to record the signal as an audio file.
 
@@ -85,19 +90,19 @@ Opening an audio recording of one of the signals in Audacity presents us with th
 
 ### Figure 8 Audacity high level
 
-<a href="http://www.joemaidman.com/wp-content/uploads/2017/05/11.png"><img class="alignnone wp-image-507 size-large" src="http://www.joemaidman.com/wp-content/uploads/2017/05/11-1024x314.png" alt="1" width="550" height="169" /></a>
+<a href="http://www.joemaidman.com/assets/images/2017-05-08/11.png"><img class="alignnone wp-image-507 size-large" src="http://www.joemaidman.com/assets/images/2017-05-08/11.png" alt="1" width="550" height="169" /></a>
 
 Once we have trimmed the white noise and zoomed in on the transmission, we see a series of twelve individual repeating signals with an interval of c12,000 microseconds.
 
 ### Figure 9 Audacity repeating signal
 
-<a href="http://www.joemaidman.com/wp-content/uploads/2017/05/2.png"><img class="alignnone wp-image-508 size-large" src="http://www.joemaidman.com/wp-content/uploads/2017/05/2-1024x289.png" alt="2" width="550" height="155" /></a>
+<a href="http://www.joemaidman.com/assets/images/2017-05-08/2.png"><img class="alignnone wp-image-508 size-large" src="http://www.joemaidman.com/assets/images/2017-05-08/2.png" alt="2" width="550" height="155" /></a>
 
 Zooming in further to one of these signals shows us the individual bits being transmitted along with their transmission periods using the time index as a measurement.
 
 ### Figure 10 Audacity individual transmission
 
-<a href="http://www.joemaidman.com/wp-content/uploads/2017/05/3.png"><img class="alignnone wp-image-509 size-large" src="http://www.joemaidman.com/wp-content/uploads/2017/05/3-1024x384.png" alt="3" width="550" height="206" /></a>
+<a href="http://www.joemaidman.com/assets/images/2017-05-08/3.png"><img class="alignnone wp-image-509 size-large" src="http://www.joemaidman.com/assets/images/2017-05-08/3.png" alt="3" width="550" height="206" /></a>
 
 This screenshot reveals a signal of: [1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0] with each bit being transmitted for approximately 350 microseconds. We can use this information to program the microcontroller to replay the signal. Our RF remote control is sending data packets that appear to be 38 bits long and (after looking at several different signals) contain a fairly obvious preamble code comprising roughly the first 18 bits.
 
@@ -237,25 +242,27 @@ void sendRF(int code []) {
 ```
 
 ### Figure 11 Fritzing schematic
-<a href="http://www.joemaidman.com/wp-content/uploads/2017/05/Fan-Controller_bb.png"><img class="alignnone wp-image-503 size-large" src="http://www.joemaidman.com/wp-content/uploads/2017/05/Fan-Controller_bb-1024x796.png" alt="Fan Controller_bb" width="550" height="428" /></a>
+
+<a href="http://www.joemaidman.com/assets/images/2017-05-08/Fan-Controller_bb.png"><img class="alignnone wp-image-503 size-large" src="http://www.joemaidman.com/assets/images/2017-05-08/Fan-Controller_bb.png" alt="Fan Controller_bb" width="550" height="428" /></a>
 
 ### Figure 12 Reality
 
-<a href="http://www.joemaidman.com/wp-content/uploads/2017/05/20170415_161523.jpg"><img class="alignnone wp-image-514 size-large" src="http://www.joemaidman.com/wp-content/uploads/2017/05/20170415_161523-1024x768.jpg" alt="20170415_161523" width="550" height="413" /></a>
+<a href="http://www.joemaidman.com/assets/images/2017-05-08/20170415_161523.jpg"><img class="alignnone wp-image-514 size-large" src="http://www.joemaidman.com/assets/images/2017-05-08/20170415_161523.jpg" alt="20170415_161523" width="550" height="413" /></a>
 
 ### Part 5: The final product
 
 ### Figure 13 Control web page
 
-<a href="http://www.joemaidman.com/wp-content/uploads/2017/05/webpage1.png"><img class="alignnone wp-image-519 size-large" src="http://www.joemaidman.com/wp-content/uploads/2017/05/webpage1-1024x638.png" alt="webpage" width="550" height="343" /></a>
+<a href="http://www.joemaidman.com/assets/images/2017-05-08/webpage1.png"><img class="alignnone wp-image-519 size-large" src="http://www.joemaidman.com/assets/images/2017-05-08/webpage1.png" alt="webpage" width="550" height="343" /></a>
 
 ### Figure 14 Demo
-[![Fan test](http://www.joemaidman.com/wp-content/uploads/2017/05/fans.png)](https://www.youtube.com/watch?v=-oWBbTvQUzc&feature=youtu.be)
 
+<a href="https://www.youtube.com/watch?v=-oWBbTvQUzc&feature=youtu.be">Watch</a>
 
 It works!
 
 ### Acknowledgments
+
 https://github.com/samyk for the inspiration
 https://www.youtube.com/watch?v=blpycY5JCm0 for the tips
 My girlfriend for my constant stealing of the remote control and random light/fan shows!
